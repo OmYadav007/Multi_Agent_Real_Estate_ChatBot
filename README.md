@@ -55,4 +55,56 @@ A Streamlit web app that combines **GPT‑4o‑mini** with lightweight agent rou
 | **Leaky faucet (text)** | “Bathroom faucet keeps dripping—any quick fix?” | `issue_detection_agent` | Guides through shutting water, replacing washer/cartridge, or calling plumber. |
 
 ---
+## 5. Local Setup — Step‑by‑Step
+_Estimated time: ~10 minutes on a clean machine_
+
+> The guide assumes **Windows / macOS / Linux** and a fresh **Miniconda** install.
+
+### 5.1 Install Miniconda (if you don’t already have it)
+1. Download the latest installer for your OS from <https://docs.conda.io/en/latest/miniconda.html>.
+2. Run the installer → **keep default options** (adds `conda` to your PATH).
+3. Open a new terminal / PowerShell window so `conda` is available.
+
+### 5.2 Create & activate the project environment
+```bash
+# 1  Create env with Python 3.11
+conda create -n realestate-chatbot python=3.11 -y
+
+# 2  Activate it (run this every time you work on the project)
+conda activate realestate-chatbot
+```
+
+### 5.3 Grab the code
+```bash
+# Clone or download the repo
+git clone https://github.com/OmYadav007/Multi_Agent_Real_Estate_ChatBot.git
+cd Multi_Agent_Real_Estate_ChatBot
+```
+### 5.4 Install Python dependencies
+```bash
+pip install -r requirements.txt
+```
+_`requirements.txt` already matches the libraries listed in section 1._
+
+### 5.5 Add your Azure OpenAI credentials
+
+2. Open `.env` in a text editor and fill in:
+   ```dotenv
+   AZURE_SUBSCRIPTION_KEY="your‑azure‑key‑here"
+   ```
+3. **Save** the file — `python‑dotenv` will load these at runtime.
+
+### 5.6 Run the app
+```bash
+streamlit run app.py
+```
+* Your default browser opens to <http://localhost:8501>
+* Chat with the bot, optionally upload images.
+
+### 5.7 Troubleshooting
+| Symptom | Quick fix |
+|---------|-----------|
+| **“Module X not found”** | Re‑check `pip install -r requirements.txt` ran inside the active conda env. |
+| **“.env not found”** | Ensure the file exists in the project root and is named exactly `.env`. |
+| **API quota exceeded** | You’re on Azure free tier—wait or raise limits in the portal. |
 
