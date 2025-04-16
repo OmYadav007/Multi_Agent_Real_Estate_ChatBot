@@ -29,7 +29,7 @@ A Streamlit web app that combines **GPT‑4o‑mini** with lightweight agent rou
 ## 2. Logic Behind Agent Switching
 1. **User turn** → `app.py` passes latest text to `router_manager.agent_router()`.
 2. Router sends a *mini* classification request to GPT‑4o‑mini. The request processes the given user input with the image and responds with which function to use 
-3. GPT is being used as an agent to make the function call based on classfication result
+3. GPT is being used as an agent to make the function call based on classfication result , so it calls either the issue_detection_agent or the tenancy_faq_agent
    
 
 
