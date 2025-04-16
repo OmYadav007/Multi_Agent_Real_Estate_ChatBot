@@ -24,7 +24,7 @@ for msg in st.session_state.messages:
                             encoded_image_data = item["image_url"]["url"]
                             encoded_image_data_cleaned = encoded_image_data.split(",")[1]
                             decoded_image = utility.decode_image(encoded_image_data_cleaned)
-                            st.image(decoded_image, use_column_width=True)
+                            st.image(decoded_image, width=300)
                 else:
                     
                     st.markdown(msg["content"])
@@ -66,7 +66,7 @@ if user_input:
                 elif item["type"] == "image_url":
                     image_data_cleaned = item["image_url"]["url"].split(",")[1]
                     decoded_image = utility.decode_image(image_data_cleaned)
-                    st.image(decoded_image, use_column_width=True)
+                    st.image(decoded_image, width=300)
         else:
            
             st.markdown(entry["content"])
