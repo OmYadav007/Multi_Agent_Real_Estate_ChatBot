@@ -1,7 +1,7 @@
 import streamlit as st
 import utility
 import constants
-st.title("Multi-Agent Real Estate Assistant Chatbot")
+st.title("Multi-Agent Real Estate Assistant")
 import router_manager
 
 
