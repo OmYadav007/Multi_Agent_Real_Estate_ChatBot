@@ -28,14 +28,10 @@ A Streamlit web app that combines **GPT‑4o‑mini** with lightweight agent rou
 ---
 ## 2. Logic Behind Agent Switching
 1. **User turn** → `app.py` passes latest text to `router_manager.agent_router()`.
-2. Router sends a *mini* classification request to GPT‑4o‑mini with:
-   * an *agent‑classification* system prompt, and
-   * an OpenAI **function‑calling schema** exposing two fake funcs: `tenancy_faq_agent` and `issue_detection_agent`.
-3. GPT replies with a `function_call` naming one of those funcs.
-4. Router maps that name to the corresponding file in `agents/` and returns its system prompt.
-5. `app.py` **drops any earlier system prompts** (prevents stacking) and injects the new one before the full chat is sent for the real answer.
+2. Router sends a *mini* classification request to GPT‑4o‑mini. The request processes the given user input with the image and responds with which function to use 
+3. GPT is being used as an agent to make the function call based on classfication result
+   
 
-> Result: one chat window that transparently swaps expertise—no if/else spaghetti.
 
 ---
 ## 3. How Image‑Based Issue Detection Works
